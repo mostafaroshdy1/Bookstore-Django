@@ -1,0 +1,38 @@
+{% extends 'base.layout.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <!-- Center the card horizontally -->
+    <div class="col-md-4">
+      <!-- Adjust the width as needed (e.g., col-md-8 for medium screens) -->
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title">{{ book.title }}</h5>
+        </div>
+        <div class="card-body">
+          <img
+            class="card-img-top img-fluid mb-3"
+            src="https://res.cloudinary.com/dlmq1xbtj/image/upload/v1715191818/book_ltzjfy.png"
+            alt="Book Image"
+          />
+
+          <p class="card-text">
+            <strong>Description:</strong> {{ book.description }}
+          </p>
+          <p class="card-text"><strong>Rate:</strong> {{ book.rate }}</p>
+          <a
+            class="btn btn-warning"
+            href="{% url 'books:book-editTemplate' book.id %}"
+            >Edit</a
+          >
+          <a
+            class="btn btn-danger"
+            href="{% url 'books:book-destroy' book.id %}"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

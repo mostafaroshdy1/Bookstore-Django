@@ -1,0 +1,41 @@
+{% extends 'base.layout.html' %} {% block content %}
+
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <!-- Book Card -->
+    <!-- Card 1 -->
+    {% for book in books %}
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ book }}</h5>
+
+          {% load static %}
+          <img
+            class="card-img-top"
+            src="https://res.cloudinary.com/dlmq1xbtj/image/upload/v1715191818/book_ltzjfy.png"
+            alt=""
+          />
+
+          <a
+            class="btn btn-primary"
+            href="{% url 'books:book-detail' book.id %}"
+            >Show Details</a
+          >
+          <a
+            class="btn btn-warning"
+            href="{% url 'books:book-editTemplate' book.id %}"
+            >Edit</a
+          >
+          <a
+            class="btn btn-danger"
+            href="{% url 'books:book-destroy' book.id %}"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

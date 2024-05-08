@@ -1,0 +1,67 @@
+{% extends 'base.layout.html' %} {% block content %}
+<div class="container pt-5 mt-5">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-4">Edit The Book</h5>
+          <form
+            method="POST"
+            action="{% url 'books:book-editTemplate' book.id %}"
+          >
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="bookName" class="form-label">Book Name</label>
+              <input
+                name="title"
+                type="text"
+                class="form-control"
+                id="bookName"
+                placeholder="Enter book name"
+                maxlength="100"
+                minlength="1"
+                value="{{ book }}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="rate" class="form-label">Rate</label>
+              <input
+                name="rate"
+                type="number"
+                class="form-control"
+                id="rate"
+                placeholder="Enter rate"
+                max="10"
+                min="1"
+                required
+                value="{{ book.rate }}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                name="description"
+                class="form-control"
+                id="description"
+                rows="3"
+                maxlength="500"
+                minlength="10"
+                required
+              >
+{{ book.description }}</textarea
+              >
+              <!-- Place the value here -->
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary" required>
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
